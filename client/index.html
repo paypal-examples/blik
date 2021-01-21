@@ -6,10 +6,34 @@
 	<meta charset="UTF-8" />
   <link href="./styles.css" rel="stylesheet">
 
+  <script src="https://www.paypal.com/sdk/js?client-id=AfPbdUbV4LJdK0-0B0QPeUyHnzGgVhIwZfBO3wYRoazaSYRJAIKwwHnfI0EbekJB42FJuVi-3-vgsQvi&components=buttons,fields,marks&buyer-country=PL&currency=PLN"></script>
+
 </head>
 
 <body>
-  <div id="app"></div>
+    <h3>Enter payment method</h3>
+    <br />
+
+    <label>
+      <input
+        type="radio"
+        name="payment-option"
+        value="paypal"
+        id="paypal-radio"
+        checked
+      />
+      <span id="paypal-mark"></span>
+    </label>
+
+    <label>
+      <input id="blik-radio" value="blik" name="payment-option" type="radio" />
+      <span id="blik-mark"></span>
+    </label>
+
+    <div id="blik-container"></div>
+
+    <div id="paypal-btn"></div>
+    <div id="blik-btn"></div>
 
 	<script src="./index.js">
 	</script>
