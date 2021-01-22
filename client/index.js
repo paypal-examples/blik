@@ -4,7 +4,7 @@ const order = {
   purchase_units: [
     {
       amount: {
-        currency_code: 'EUR',
+        currency_code: 'PLN',
         value: '49.11',
       },
     },
