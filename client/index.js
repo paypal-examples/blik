@@ -3,7 +3,7 @@ const order = {
     {
       amount: {
         currency_code: 'PLN',
-        value: '49.11',
+        value: '49.99',
       },
     },
   ],
@@ -88,6 +88,9 @@ paypal
     upgradeLSAT: true,
     style: {
       label: 'pay',
+    },
+    createOrder(data, actions) {
+      return actions.order.create(order)
     },
     onApprove(data, actions) {
       fetch(`/capture/${data.orderID}`, {
