@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Blik Example</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-	<title>Parcel Sandbox</title>
-	<meta charset="UTF-8" />
-  <link href="./styles.css" rel="stylesheet">
+    <link href="./styles.css" rel="stylesheet" />
 
-  <script src="https://www.paypal.com/sdk/js?client-id=AfPbdUbV4LJdK0-0B0QPeUyHnzGgVhIwZfBO3wYRoazaSYRJAIKwwHnfI0EbekJB42FJuVi-3-vgsQvi&components=buttons,fields,marks&buyer-country=PL&currency=PLN"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AfPbdUbV4LJdK0-0B0QPeUyHnzGgVhIwZfBO3wYRoazaSYRJAIKwwHnfI0EbekJB42FJuVi-3-vgsQvi&components=buttons,fields,marks,funding-eligibility&enable-funding=blik&currency=PLN"></script>
+  </head>
 
-</head>
-
-<body>
-    <h3>Enter payment method</h3>
+  <body>
     <br />
 
     <label>
@@ -35,8 +34,7 @@
     <div id="paypal-btn"></div>
     <div id="blik-btn"></div>
 
-	<script src="./index.js">
-	</script>
-</body>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="./index.js"></script>
+  </body>
 </html>

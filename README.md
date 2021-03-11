@@ -3,7 +3,7 @@
 This integration uses the JavaScript SDK to accept Blik payments
 
 
-See a [hosted version](https://demo-blik-js-sdk.herokuapp.com) of the sample
+See a [hosted version](https://blik-js-sdk.herokuapp.com) of the sample
 
 
 ### How to run locally

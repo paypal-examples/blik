@@ -20,34 +20,39 @@ app.get("/", (req, res) => {
 });
 
 /**
- * Webhook handlers.
+ * Capture Order handler.
  */
-app.post("/webhook", async (req, res) => {
+ app.post("/capture/:orderId", async (req, res) => {
+  const { orderId } = req.params
+
+  const { access_token } = await getAccessToken();
+  
+  const { data } = await axios({
+    url: `${PAYPAL_API_BASE}/v2/checkout/orders/${orderId}/capture`,
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
+
+  console.log(`💰 Payment captured!`);
+  res.json(data)
+});
+
+/**
+ * Webhook handler.
+ */
+ app.post("/webhook", async (req, res) => {
   const { access_token } = await getAccessToken();
 
-  const { id, event_type, resource } = req.body;
+  const { event_type, resource } = req.body;
   const orderId = resource.id;
 
   console.log(`🪝 Recieved Webhook Event`);
 
   /* verify the webhook signature */
-
-  /* ** skip ** validation while endpoint gets looked at
-  {
-    "name": "VALIDATION_ERROR",
-    "message": "Invalid request - see details",
-    "debug_id": "924631cb4acbe",
-    "details": [{
-        "field": "webhookId",
-        "value": "WH-64G99887NT8468436-37R34875Y77436504",
-        "location": "body",
-        "issue": "must match \"^[a-zA-Z0-9]+$\""
-    }],
-    "links": []
-  }
-  */
-
-  /*
   try {
     const { data } = await axios({
       url: `${PAYPAL_API_BASE}/v1/notifications/verify-webhook-signature`,
@@ -63,11 +68,13 @@ app.post("/webhook", async (req, res) => {
         cert_url: req.headers["paypal-cert-url"],
         auth_algo: req.headers["paypal-auth-algo"],
         transmission_sig: req.headers["paypal-transmission-sig"],
-        webhook_id: id,
+        webhook_id: WEBHOOK_ID,
         webhook_event: req.body,
       },
     });
+
     const { verification_status } = data;
+
     if (verification_status !== "SUCCESS") {
       console.log(`⚠️  Webhook signature verification failed.`);
       return res.sendStatus(400);
@@ -76,9 +83,8 @@ app.post("/webhook", async (req, res) => {
     console.log(`⚠️  Webhook signature verification failed.`);
     return res.sendStatus(400);
   }
-  */
 
-  /* capture the order if approved */
+  /* capture the order */
   if (event_type === "CHECKOUT.ORDER.APPROVED") {
     try {
       const { data } = await axios({
