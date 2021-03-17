@@ -3,7 +3,7 @@ const order = {
     {
       amount: {
         currency_code: 'PLN',
-        value: '49.99',
+        value: '99.99',
       },
     },
   ],
@@ -75,8 +75,7 @@ paypal
     },
     fields: {
       name: {
-        value: '',
-        hidden: false,
+        value: ''
       },
     },
   })
