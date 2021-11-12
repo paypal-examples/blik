@@ -2,6 +2,7 @@ const express = require("express");
 const { resolve } = require("path");
 const axios = require("axios");
 const dotenv = require("dotenv");
+const open = require("open")
 
 dotenv.config();
 
@@ -107,6 +108,7 @@ app.get("/", (req, res) => {
   res.sendStatus(200);
 });
 
-app.listen(port, () => {
+app.listen(port, async () => {
+  await open(`http://localhost:${port}`);
   console.log(`Example app listening at http://localhost:${port}`);
 });

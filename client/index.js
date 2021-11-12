@@ -42,7 +42,7 @@ paypal
   .render("#blik-mark");
 
 paypal
-  .Fields({
+  .PaymentFields({
     fundingSource: paypal.FUNDING.BLIK,
     style: {},
     fields: {
@@ -56,7 +56,6 @@ paypal
 paypal
   .Buttons({
     fundingSource: paypal.FUNDING.BLIK,
-    upgradeLSAT: true,
     style: {
       label: "pay",
     },
@@ -88,6 +87,9 @@ paypal
   })
   .render("#blik-btn");
 
+document.getElementById("blik-btn").style.display = "none";
+document.getElementById("blik-container").style.display = "none";
+
 // Listen for changes to the radio buttons
 document.querySelectorAll("input[name=payment-option]").forEach((el) => {
   // handle button toggles
@@ -113,5 +115,5 @@ document.querySelectorAll("input[name=payment-option]").forEach((el) => {
   });
 });
 
-document.getElementById("paypal-btn").style.display = "none";
+
 
