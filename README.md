@@ -1,4 +1,4 @@
-# Paying with Blik & Paypal
+# Paying with Blik or Paypal on the web
 
 <p>
 <img src="https://www.paypalobjects.com/images/checkout/latinum/Altpay_logo_blik.svg" alt="Blik Logo">
