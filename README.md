@@ -1,4 +1,7 @@
-# Paying with Blik
+# Paying with Blik & Paypal
+
+<img src="https://www.paypalobjects.com/images/checkout/latinum/Altpay_logo_blik.svg" alt="Blik Logo">
+
 
 This integration uses the JavaScript SDK to accept Blik payments
 
