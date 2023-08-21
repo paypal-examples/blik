@@ -26,3 +26,7 @@ and configuring your .env config file with your Paypal ClientId and ClientSecret
 2. Run `npm install`
 3. Run `npm run dev`
 4. Navigate to `http://localhost:8080/`
+
+
+### PayPal Codespaces Links
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/paypal-examples/blik)

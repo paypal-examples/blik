@@ -1,4 +1,4 @@
-const { NODE_ENV, CLIENT_ID, CLIENT_SECRET } = process.env;
+const { NODE_ENV, PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
 
 const isProd = NODE_ENV === "production";
 
@@ -10,6 +10,6 @@ const PAYPAL_API_BASE = isProd
 module.exports = {
   isProd,
   PAYPAL_API_BASE,
-  CLIENT_ID,
-  CLIENT_SECRET,
+  PAYPAL_CLIENT_ID,
+  PAYPAL_CLIENT_SECRET,
 };
