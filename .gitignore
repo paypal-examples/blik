@@ -1,5 +1,4 @@
 .env
-/package-lock.json
 .idea
 .DS_STORE
 .eslintcache
