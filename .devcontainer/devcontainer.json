@@ -19,11 +19,11 @@
   "secrets": {
     "CLIENT_ID": {
       "description": "Sandbox client ID of the application.",
-      "documentationUrl": "https://developer.paypal.com/api/rest/"
+      "documentationUrl": "https://developer.paypal.com/dashboard/applications/sandbox"
     },
     "CLIENT_SECRET": {
       "description": "Sandbox secret of the application.",
-      "documentationUrl": "https://developer.paypal.com/api/rest/"
+      "documentationUrl": "https://developer.paypal.com/dashboard/applications/sandbox"
     },
     "WEBHOOK_ID": {
       "description": "Webhook ID",
