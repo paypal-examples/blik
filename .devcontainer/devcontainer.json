@@ -1,0 +1,47 @@
+// For more details, see https://aka.ms/devcontainer.json.
+{
+  "name": "Paying with Blik or Paypal on the web",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}/",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "postCreateCommand": "npm install --ignore-scripts",
+  "postAttachCommand": {
+    "Start server": "CI=true npx kill-port --yes 8080 && npm start"
+  },
+  "forwardPorts": [
+    8080
+  ],
+  "portsAttributes": {
+    "8080": {
+      "label": "Preview of Paying with Blik or Paypal on the web",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "secrets": {
+    "CLIENT_ID": {
+      "description": "Sandbox client ID of the application.",
+      "documentationUrl": "https://developer.paypal.com/dashboard/applications/sandbox"
+    },
+    "CLIENT_SECRET": {
+      "description": "Sandbox secret of the application.",
+      "documentationUrl": "https://developer.paypal.com/dashboard/applications/sandbox"
+    },
+    "WEBHOOK_ID": {
+      "description": "Webhook ID",
+      "documentationUrl": "https://developer.paypal.com/api/rest/webhooks/"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vsls-contrib.codetour",
+        "ms-vscode.vscode-typescript"
+      ],
+      "settings": {
+        "git.openRepositoryInParentFolders": "always",
+        "files.exclude": {
+          "**/.devcontainer": true
+        }
+      }
+    }
+  }
+}
