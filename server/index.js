@@ -12,22 +12,63 @@ const { PAYPAL_API_BASE } = require("./config");
 const app = express();
 
 const port = process.env.PORT || 8080;
-
-app.use(express.static(resolve(__dirname, "../client")));
+app.set("view engine", "ejs");
+app.set('views', resolve(__dirname, "../client/views"));
+app.use(express.static(resolve(__dirname, "../client/public")));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.sendFile(resolve(__dirname, "../client/index.html"));
+  const clientId = process.env.CLIENT_ID;
+  const clientSecret = process.env.CLIENT_SECRET;
+  if (!clientId || !clientSecret) {
+    res.status(500).send('Client ID and/or Client Secret is missing');
+  } else {
+    res.render("index", { clientId });
+  }
+});
+
+/**
+ * Create Order handler.
+ */
+app.post("/api/orders", async (req, res) => {
+
+  // use the cart information passed from the front-end to calculate the purchase unit details
+  const { cart } = req.body;
+
+  const { access_token } = await getAccessToken();
+  const { data } = await axios({
+    url: `${PAYPAL_API_BASE}/v2/checkout/orders`,
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: `Bearer ${access_token}`,
+    },
+    data: JSON.stringify({
+      intent: "CAPTURE",
+      purchase_units: [
+        {
+          amount: {
+            currency_code: "PLN",
+            value: "99.99",
+          },
+        },
+      ]
+    })
+  });
+
+  console.log(`Order Created!`);
+  res.json(data);
 });
 
 /**
  * Capture Order handler.
  */
- app.post("/capture/:orderId", async (req, res) => {
+app.post("/api/orders/:orderId/capture", async (req, res) => {
   const { orderId } = req.params
 
   const { access_token } = await getAccessToken();
-  
+
   const { data } = await axios({
     url: `${PAYPAL_API_BASE}/v2/checkout/orders/${orderId}/capture`,
     method: "post",
@@ -45,7 +86,7 @@ app.get("/", (req, res) => {
 /**
  * Webhook handler.
  */
- app.post("/webhook", async (req, res) => {
+app.post("/webhook", async (req, res) => {
   const { access_token } = await getAccessToken();
 
   const { event_type, resource } = req.body;
