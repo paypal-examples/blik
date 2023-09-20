@@ -28,5 +28,19 @@ and configuring your .env config file with your Paypal ClientId and ClientSecret
 4. Navigate to `http://localhost:8080/`
 
 
-### PayPal Codespaces Links
+## PayPal Codespaces 
+
+PayPal codespaces require a client ID and client secret for your app. 
+
+### Link to codespaces 
+
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/paypal-examples/blik)
+
+### Learn more 
+
+You can read more about codespaces in the [PayPal Developer Docs](https://developer.paypal.com/api/rest/sandbox/codespaces).
+
+### Feedback 
+
+* To report a bug or suggest a new feature, create an [issue in GitHub](https://github.com/paypal-examples/paypaldevsupport/issues/new/choose). 
+* To submit feedback, go to [GitHub Codespaces](https://developer.paypal.com/api/rest/sandbox/codespaces) and select the "Feedback" tab.
