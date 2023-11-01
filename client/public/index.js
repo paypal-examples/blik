@@ -80,6 +80,7 @@ paypal
       },
 
       // set custom rules to apply to fields classes (optional)
+      // see https://www.w3schools.com/css/css_syntax.asp fore more on selectors and declarations
       rules: {
         ".Input": {}, // overwrite properties for the input fields
         ".Input:hover": {}, // applies to the input field on mouse hover
