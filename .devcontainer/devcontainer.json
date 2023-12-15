@@ -34,7 +34,7 @@
     "vscode": {
       "extensions": [
         "vsls-contrib.codetour",
-        "ms-vscode.vscode-typescript"
+        "ms-vscode.vscode-typescript","PayPal.vscode-paypal"
       ],
       "settings": {
         "git.openRepositoryInParentFolders": "always",
